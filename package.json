@@ -4,7 +4,8 @@
   "description": "* [Description](#description)\r   * [Technology Used](#technology-used)\r   * [Installation](#installation)\r   * [Usage Information](#usage-information)\r   * [License](#license)\r   * [Contributing](#contributing)\r   * [Tests](#tests)\r   * [Questions](#questions)\r   * [Github Profile](#github)\r   * [E-mail](#email)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
   },
   "keywords": [],
   "author": "",

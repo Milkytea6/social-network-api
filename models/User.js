@@ -1,7 +1,5 @@
 // Sets up Schema from mongoose
 const { Schema, model } = require('mongoose');
-// imports the Thought model
-const Thought = require('./Thought');
 
 // Initializes the User model
 const userSchema = new Schema(
@@ -10,16 +8,26 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            trimmed: true
+            trim: true
         },
         email:{
             type: String,
             required: true,
             unique: true,
         },
-        thought: [Thought],
+        thought: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought'
+            }
+        ],
         
-        friends: [User]
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ]
         
     },
     {
