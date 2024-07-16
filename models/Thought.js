@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
-const User = require('./User');
 
 //  Initializes the Thought model
 const thoughtSchema = new Schema(
@@ -17,7 +16,12 @@ const thoughtSchema = new Schema(
         default: Date.now,
 // Use a getter method to format the timestamp on query
        },
-       username: [User],
+       username: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
        reactions: [reactionSchema]
     },
     {
