@@ -1,0 +1,17 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "* [Description](#description)\r   * [Technology Used](#technology-used)\r   * [Installation](#installation)\r   * [Usage Information](#usage-information)\r   * [License](#license)\r   * [Contributing](#contributing)\r   * [Tests](#tests)\r   * [Questions](#questions)\r   * [Github Profile](#github)\r   * [E-mail](#email)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
+    "nodemon": "^3.1.4"
+  }
+}
