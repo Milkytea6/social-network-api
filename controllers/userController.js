@@ -48,6 +48,21 @@ const deleteUser = async (req, res) => {
         res.status(500).json(err)
     }
 }
+const updateEmail = async (req, res) => {
+    console.log('updateEmail');
+    try {
+        console.log(req.params.userId);
+        console.log(req.body.email);
+        const user = await User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $set: { email: req.body.email } },
+            { runValidators: true, new: true }
+        )
+        res.json(user);
+        } catch (err) {
+        res.status(500).json(err);
+    }
+}
 // Function to add a friend
 const addFriend = async (req, res) => {
     console.log('addFriend')
@@ -83,4 +98,4 @@ const removeFriend = async (req, res) => {
     }
 }
 // Exports all functions for routes to use
-module.exports = { getUsers, getSingleUser, createUser, deleteUser, addFriend, removeFriend } 
+module.exports = { getUsers, getSingleUser, createUser, deleteUser, updateEmail, addFriend, removeFriend } 

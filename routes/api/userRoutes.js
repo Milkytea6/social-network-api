@@ -4,6 +4,7 @@ const {
     getSingleUser,
     createUser,
     deleteUser,
+    updateEmail,
     addFriend, 
     removeFriend
     
@@ -15,7 +16,7 @@ router.route('/').get(getUsers)
 .post(createUser);
 
 // /api/users/:userId
-router.route('/:userId').get(getSingleUser)
+router.route('/:userId').get(getSingleUser).put(updateEmail)
 .delete(deleteUser);
 
 // /api/users/:userId/friends/
