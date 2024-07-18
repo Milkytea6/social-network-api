@@ -98,4 +98,11 @@ const removeReaction = async (req, res) => {
     }
 }
 // Exports all functions for routes to use
-module.exports = { getThoughts, getSingleThought, createThought, deleteThought, updateThought, createReaction, removeReaction } 
+module.exports = { 
+    getThoughts, 
+    getSingleThought, 
+    createThought, 
+    deleteThought, 
+    updateThought, 
+    createReaction, 
+    removeReaction } 
