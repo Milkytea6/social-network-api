@@ -86,10 +86,10 @@ const removeReaction = async (req, res) => {
     console.log('deletereaction');
     try {
         console.log(req.params.thoughtId);
-        console.log(req.params.reactionsId);
+        console.log(req.params.reactionId);
         const thought = await Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $pull: { reactions: { thoughtId: req.params.reactionsId } } },
+            { $pull: { reactions: { reactionId: req.params.reactionId } } },
             { runValidators: true, new: true }
         )
         res.json(thought);
