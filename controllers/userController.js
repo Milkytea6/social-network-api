@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 // Imports models 
 
@@ -67,18 +68,19 @@ const updateEmail = async (req, res) => {
 const addFriend = async (req, res) => {
     console.log('addFriend')
     try {
-        console.log(req.params.userId)
-        console.log(req.body)
+        console.log(req.params);
+        console.log(req.params.userId);
+        console.log(req.params.friendsId);
         const user = await User.findOneAndUpdate(
             { _id: req.params.userId },
             // $addToSet will add an element to the friends array and not add duplicates
-            { $addToSet: { friends: req.body }},
+            { $addToSet: { friends: req.params.friendsId } },
             { runValidators: true, new: true }
     )
     res.json(user);
     } catch (err) {
         console.log('addFriend catch err');
-        res.status(500).json(err)
+        res.status(500).json(err);
     }
 }
 // Function to delete a friend
@@ -89,7 +91,7 @@ const removeFriend = async (req, res) => {
         console.log(req.params.friendsId);
         const user = await User.findOneAndUpdate(
             { _id: req.params.userId },
-            { $pull: { friends: { userId: req.params.friendsId } } },
+            { $pull: { friends:  req.params.friendsId  } },
             { runValidators: true, new: true }
         )
         res.json(user);
@@ -98,4 +100,11 @@ const removeFriend = async (req, res) => {
     }
 }
 // Exports all functions for routes to use
-module.exports = { getUsers, getSingleUser, createUser, deleteUser, updateEmail, addFriend, removeFriend } 
+module.exports = { 
+    getUsers, 
+    getSingleUser, 
+    createUser, 
+    deleteUser, 
+    updateEmail, 
+    addFriend, 
+    removeFriend } 
