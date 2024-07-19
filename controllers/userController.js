@@ -15,14 +15,14 @@ const getUsers = async (req, res) => {
 const getSingleUser = async (req, res) => {
     try {
         console.log(req.params.userId)
-        const user = await User.findOne({ _id: req.params.userId })
+        const user = await User.findOne({ _id: req.params.userId }).populate('friends');
 
         if (!user) {
             return res.stauts(404).json({ message: "Could not find user with that ID" });
         }
         res.json(user);
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json(err.message);
     }
 }
 // Function to create a user
@@ -92,7 +92,7 @@ const removeFriend = async (req, res) => {
         const user = await User.findOneAndUpdate(
             { _id: req.params.userId },
             { $pull: { friends:  req.params.friendsId  } },
-            { runValidators: true, new: true }
+            // { runValidators: true, new: true }
         )
         res.json(user);
     } catch (err) {
